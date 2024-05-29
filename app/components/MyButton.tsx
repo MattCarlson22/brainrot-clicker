@@ -1,38 +1,41 @@
-import React, { useState, useEffect } from 'react';
+// MyButton.tsx
+import React, { useState } from 'react';
 import { styles } from '../styles/styles';
 
-const MyButton = () => {
-  const [count, setCount] = useState(0);
+interface MyButtonProps {
+  clicks: number;
+  setClicks: React.Dispatch<React.SetStateAction<number>>;
+  totalCPS: number;
+  addFallingShake: () => void;
+}
+
+const MyButton: React.FC<MyButtonProps> = ({ clicks, setClicks, totalCPS, addFallingShake }) => {
   const [clicked, setClicked] = useState(false);
-
-  useEffect(() => {
-    const savedCount = localStorage.getItem('clickCount');
-    if (savedCount) {
-      setCount(parseInt(savedCount, 10));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('clickCount', count.toString());
-  }, [count]);
+  const [hovered, setHovered] = useState(false);
 
   function handleClick() {
-    setCount(prevCount => prevCount + 1);
+    setClicks(prevClicks => prevClicks + 1);
     setClicked(true);
+    addFallingShake();
     setTimeout(() => {
       setClicked(false);
-    }, 200); // Adjust the delay as needed
+    }, 100); // Adjust the delay as needed
   }
 
   return (
     <div style={styles.buttonContainer}>
-      <div style={styles.counter}>Clicked {count} times</div>
+      <div style={styles.cpsCounter}>Grimace Shakes per second: {totalCPS.toFixed(1)}</div>
+      <div style={styles.counter}> {Math.floor(clicks)} Shakes</div>
       <button
-        style={{ ...styles.button, ...(clicked && styles.buttonClicked) }}
+        style={{
+          ...styles.button,
+          ...(hovered && styles.buttonHovered),
+          ...(clicked && styles.buttonClicked),
+        }}
         onClick={handleClick}
-      >
-        Click me
-      </button>
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      />
     </div>
   );
 }
