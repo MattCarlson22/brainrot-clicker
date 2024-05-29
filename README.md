@@ -1,6 +1,6 @@
-# Grimace Shake Clicker
+# Brainrot Clicker
 
-A clicker game featuring falling Grimace shakes.
+A clicker game featuring falling Grimace shakes and later more random brainrot.
 
 ## Getting Started
 
