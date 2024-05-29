@@ -2,6 +2,10 @@
 
 A clicker game featuring falling Grimace shakes and later more random brainrot.
 
+## URL
+
+https://brainrot-clicker.vercel.app/
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
