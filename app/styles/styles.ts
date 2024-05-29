@@ -1,15 +1,29 @@
 // styles.ts
 
 import { CSSProperties } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
+import { Press_Start_2P } from 'next/font/google';
+
+const press_start_2P = Press_Start_2P({ subsets: ['latin'], weight: "400" });
 
 const fallAnimation = keyframes`
   0% {
-    transform: translateY(-500%);
+    transform: translateY(-100%);
   }
   100% {
     transform: translateY(100vh);
   }
+`;
+
+const rainbowAnimation = keyframes`
+  0% { color: red; }
+  14% { color: orange; }
+  28% { color: yellow; }
+  42% { color: green; }
+  57% { color: blue; }
+  71% { color: indigo; }
+  85% { color: violet; }
+  100% { color: red; }
 `;
 
 export const styles: { [key: string]: CSSProperties } = {
@@ -22,6 +36,16 @@ export const styles: { [key: string]: CSSProperties } = {
     width: '100vw',
     position: 'relative',
     overflow: 'hidden',
+    fontFamily: `${press_start_2P.style.fontFamily}`,
+    fontSize: 10,
+  },
+  header: {
+    position: 'absolute',
+    top: '10px',
+    left: '10px',
+    fontSize: '24px',
+    zIndex: 1,
+    animation: '2s linear infinite',
   },
   buttonContainer: {
     display: 'flex',
@@ -122,6 +146,7 @@ export const styles: { [key: string]: CSSProperties } = {
 
 export const FallingShake = styled.div`
   position: absolute;
+  top: 0; /* Start from the top */
   width: 50px;
   height: 50px;
   background-image: url(/grimace-shake.png);
@@ -129,4 +154,13 @@ export const FallingShake = styled.div`
   background-position: center;
   animation: ${fallAnimation} 3s linear;
   z-index: -1;
+`;
+
+export const RainbowHeader = styled.div`
+  animation: ${rainbowAnimation} 2s linear infinite;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  z-index: 1;
 `;

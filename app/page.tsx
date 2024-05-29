@@ -1,10 +1,10 @@
 // page.tsx
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import MyButton from './components/MyButton';
 import Sidebar from './components/Sidebar';
+import Header from './components/Header';
 import { styles, FallingShake } from './styles/styles';
 
 type ItemKeys = 'placeholder1' | 'placeholder2' | 'placeholder3';
@@ -66,6 +66,7 @@ export default function Home() {
 
   return (
     <div style={styles.container}>
+      <Header />
       {fallingShakes}
       <MyButton clicks={clicks} setClicks={setClicks} totalCPS={totalCPS} addFallingShake={addFallingShake} />
       <Sidebar clicks={clicks} items={items} prices={prices} buyItem={buyItem} />
