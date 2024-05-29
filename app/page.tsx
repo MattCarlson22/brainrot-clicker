@@ -1,27 +1,13 @@
 'use client';
 
-import { useState } from "react";
-
+import React from 'react';
+import MyButton from './components/MyButton';
+import { styles } from './styles/styles';
 
 export default function Home() {
   return (
-    <>
-      <h1>test</h1>
+    <div style={styles.container}>
       <MyButton />
-    </>
-  );
-}
-
-const MyButton = () => {
-  const [count, setCount] = useState(0);
-
-  function handleClick() {
-    setCount(count + 1)
-  }
-
-  return (
-    <button onClick={handleClick}>
-      Clicked {count} times
-    </button>
+    </div>
   );
 }
