@@ -96,6 +96,20 @@ export const styles: { [key: string]: CSSProperties } = {
     borderLeft: '1px solid #444444',
     boxShadow: '-2px 0 5px rgba(0, 0, 0, 0.5)',
   },
+  upgradesSidebar: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    height: '100vh',
+    padding: '20px',
+    backgroundColor: '#333333',
+    color: '#FFFFFF',
+    borderRight: '1px solid #444444',
+    boxShadow: '2px 0 5px rgba(0, 0, 0, 0.5)',
+  },
   item: {
     width: '200px',
     marginBottom: '20px',
@@ -142,6 +156,35 @@ export const styles: { [key: string]: CSSProperties } = {
     cursor: 'pointer',
     textAlign: 'center',
   },
+  debugMenu: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    padding: '20px',
+    backgroundColor: '#333',
+    color: '#fff',
+    borderRadius: '10px',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
+    zIndex: 1000,
+  },
+  debugInput: {
+    width: '100px',
+    padding: '5px',
+    marginBottom: '10px',
+    borderRadius: '5px',
+    border: '1px solid #ccc',
+    color: 'black',
+  },
+  debugButton: {
+    padding: '10px',
+    margin: '5px',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    backgroundColor: '#007BFF',
+    color: '#fff',
+    border: 'none',
+  },
 };
 
 export const FallingShake = styled.div`
@@ -160,7 +203,8 @@ export const RainbowHeader = styled.div`
   animation: ${rainbowAnimation} 2s linear infinite;
   position: absolute;
   top: 10px;
-  left: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 24px;
   z-index: 1;
 `;

@@ -17,7 +17,7 @@ const Sidebar: React.FC<SidebarProps> = ({ clicks, items, prices, buyItem }) => 
       {(['placeholder1', 'placeholder2', 'placeholder3'] as ItemKeys[]).map((item, index) => (
         <div key={item} style={styles.item}>
           <h3>Placeholder {index + 1}</h3>
-          <p>Price: {prices[item]} Clicks</p>
+          <p>Price: {prices[item]} Shakes</p>
           <p>Owned: {items[item]}</p>
           <div style={styles.buttonBuyContainer}>
             <button

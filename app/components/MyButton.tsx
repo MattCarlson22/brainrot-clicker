@@ -8,14 +8,15 @@ interface MyButtonProps {
   setClicks: React.Dispatch<React.SetStateAction<number>>;
   totalCPS: number;
   addFallingShake: () => void;
+  clickMultiplier: number;
 }
 
-const MyButton: React.FC<MyButtonProps> = ({ clicks, setClicks, totalCPS, addFallingShake }) => {
+const MyButton: React.FC<MyButtonProps> = ({ clicks, setClicks, totalCPS, addFallingShake, clickMultiplier }) => {
   const [clicked, setClicked] = useState(false);
   const [hovered, setHovered] = useState(false);
 
   function handleClick() {
-    setClicks(prevClicks => prevClicks + 1);
+    setClicks(prevClicks => prevClicks + clickMultiplier);
     setClicked(true);
     addFallingShake();
     setTimeout(() => {
@@ -26,6 +27,7 @@ const MyButton: React.FC<MyButtonProps> = ({ clicks, setClicks, totalCPS, addFal
   return (
     <div style={styles.buttonContainer}>
       <div style={styles.cpsCounter}>Grimace Shakes per second: {totalCPS.toFixed(1)}</div>
+      <div style={styles.cpsCounter}>Grimace Shakes per click: {clickMultiplier}</div>
       <div style={styles.counter}> {Math.floor(clicks)} Shakes</div>
       <button
         style={{
