@@ -25,6 +25,7 @@ export default function Home() {
   useEffect(() => {
     const savedClicks = localStorage.getItem('clickCount');
     const savedItems = localStorage.getItem('items');
+    const savedPrices = localStorage.getItem('prices');
     const savedUpgrades = localStorage.getItem('upgrades');
 
     if (savedClicks) {
@@ -32,6 +33,9 @@ export default function Home() {
     }
     if (savedItems) {
       setItems(JSON.parse(savedItems));
+    }
+    if (savedPrices) {
+      setPrices(JSON.parse(savedPrices));
     }
     if (savedUpgrades) {
       const loadedUpgrades = JSON.parse(savedUpgrades);
@@ -62,6 +66,10 @@ export default function Home() {
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(items));
   }, [items]);
+  
+  useEffect(() => {
+    localStorage.setItem('prices', JSON.stringify(prices));
+  }, [prices]);
 
   useEffect(() => {
     localStorage.setItem('upgrades', JSON.stringify(upgrades));
@@ -121,6 +129,7 @@ export default function Home() {
     setUpgrades({ upgrade1: 0, upgrade2: 0, upgrade3: 0 });
     localStorage.removeItem('clickCount');
     localStorage.removeItem('items');
+    localStorage.removeItem('prices');
     localStorage.removeItem('upgrades');
   }
 
